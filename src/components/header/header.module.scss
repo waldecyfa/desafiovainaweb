@@ -1,0 +1,102 @@
+.header {
+    background: linear-gradient(to right, #001B2F, #005695);
+    height: 12vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;  
+    a {
+        color: white;
+    }
+}
+.logoHeader {
+    display: flex;
+    margin-left: 3%;  
+      
+    img {
+        margin-bottom: 20px;
+        padding-right: 10px;
+    }
+    h1 {
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+    }
+}
+.navHeader {
+    width: 35%;
+    font-size: 20px;        
+    ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;             
+    }
+}
+.barraDeBusca {
+    border: solid 2px white;
+    border-radius: 20px;
+    margin-right: 3%;
+    width: 17%;
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    input {
+        border-radius: 20px;
+        font-size: 15px;
+        height: 5vh;
+        text-align: center;
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        color: white;
+    }
+    input::placeholder {
+        color: white;
+    }
+    button {
+        background-color: transparent;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 5vh;
+        width: 15%;
+        margin-right: 5%;
+    }
+}
+
+@media (max-width: 390px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 15vh;
+        padding-bottom: 5%;
+    }
+    .logoHeader {
+        height: 60%;
+        margin-top: 2%;
+        img {
+            height: 40px;
+            width: 50px;
+        }
+        h1 {
+            font-size: 22px;
+        }
+    }
+    .navHeader {
+        width: 100%;
+        margin-top: 2%;
+        ul {
+            height: 4vh;        
+        }
+    }
+    .barraDeBusca {
+        display: none;
+    }
+}
