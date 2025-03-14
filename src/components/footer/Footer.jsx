@@ -20,7 +20,7 @@ export default function Footer() {
                 </section>
             </section>
             <section className={s.info}>
-                <p>Layout desenvolvido pela Vai Na Web para fins educativos - 2024  </p>
+                <p>Site desenvolvido por Waldecy Junior - 2025  </p>
             </section>
         </footer>
     )
