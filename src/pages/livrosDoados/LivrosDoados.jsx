@@ -1,23 +1,36 @@
+
 import s from './livrosDoados.module.scss'
-import livro from '../../assets/livroOProtagonista.png'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
-export default function LivrosDoados() {
-    return (
-        <section className={s.livrosDoados}>
+export default function LivrosDoados(){
+
+    const [livros,setLivros] = useState([])
+
+    const Livros = async() =>{
+        const resposta = await axios.get("https://api-biblioteca-duyo.onrender.com/livros")
+        setLivros(resposta.data)
+    }
+    
+    useEffect(()=>{
+        Livros()  
+    },[])
+    
+
+    return(
+        <section className={s.livrosDoadosSection}>
             <h2>Livros Doados</h2>
-            
-            <section className={s.listaDeLivros}>
-
-                <section className={s.Livro1}>
-                    <img src={livro} alt="Imagem da capa do livro: O protagonista"/>
-                    <div className={s.infoLivro}>
-                        <p id='titulo'>O protagonista</p>
-                        <p id='autor(a)'>Susanne Andrade</p>
-                        <p id='genero'>Ficção</p>
-                    </div>
+            <section className={s.containerCards}>
+            {livros.map((item) => (
+                    <section>
+                        <div>
+                            <h3>{item.titulo}</h3>
+                            <img src={item.image_url} alt={item.titulo} />
+                        </div>
+                    </section>
+                ))}
                 </section>
             </section>
-
-        </section>
+       
     )
 }

@@ -1,69 +1,56 @@
-import iconeLivro from '../../assets/iconeLivroForm.png'
 import s from './queroDoar.module.scss'
 import { useState } from 'react'
-import axios from "axios"
+import axios from 'axios'
 
-export default function QueroDoar() {
+export default function QueroDoar(){
+   
 
     const [titulo,setTitulo] = useState("")
     const [categoria,setCategoria] = useState("")
     const [autor,setAutor] = useState("")
-    const [image_Url,setImage_Url] = useState("")
+    const [image_url,setImage_url] = useState("")
 
-    const capturarTitulo = (e) => {
+    const capturaTitulo = (e) =>{
         setTitulo(e.target.value)
     }
 
-    const capturaCategoria = (e) => {
+    const capturaCategoria = (e) =>{
         setCategoria(e.target.value)
-
     }
 
-        const capturarAutor = (e) => {
-            setAutor(e.target.value)
-        }
-
-            const capturarImagem = (e) => {
-                setImage_Url(e.target.value)
-
+    const capturaAutor = (e) =>{
+        setAutor(e.target.value)
     }
 
-    const enviarDados = async()=>{
+    const capturaImg = (e) =>{
+        setImage_url(e.target.value)
+    }
 
-        const endpoint = "https://api-biblioteca-duyo.onrender.com/doar"
+    const envioDados = async() =>{
 
-        const dadosAEnviar = {
+        const dadosParaEnviar = {
             titulo,
             categoria,
             autor,
-            image_Url
+            image_url
         }
-
-        await axios.post(endpointApi,dadosAEnviar)
+        await axios.post("https://api-biblioteca-duyo.onrender.com/livros",dadosParaEnviar)
     }
 
-    return (
+    return(
         <section className={s.queroDoarSection}>
-            <h3>Por favor, preencha o formulário com suas informações e as informações do Livro</h3>
-
-            <form onSubmit={(e) => e.preventDefault()}>
-
-                <div className={s.tituloFormulario}>
-                    <img src={iconeLivro} alt="Logo azul em formato de um livro aberto " />
-                    <h3>Informações do Livro</h3>
+            <p>Por favor, preencha o formulário com suas informações e as informações do Livro</p>
+            <form onSubmit={(e)=>e.preventDefault()}>
+                <div>
+                    
+                    <h2>Informações do Livro</h2>
                 </div>
-                <form className={s.forms} action="">
-           </form>
-                        
-            <input type="text" placeholder='Título' onChange={capturarTitulo}/>
-            <input type="text" placeholder='Categoria' onChange={capturaCategoria}/>
-            <input type="text" placeholder='Autor' onChange={capturaAutor}/>
-            <input type="text" placeholder='Link da Imagem' onChange={capturarImagem}/>
-            <input type="submit" value="Doar" className={s.buttonDoar} onClick={enviarDados}/>
-
-                </form>
-            </section>
-
-        
+                <input type="text" placeholder='Título' onChange={capturaTitulo} required />
+                <input type="text" placeholder='Categoria' onChange={capturaCategoria} required /> 
+                <input type="text" placeholder='Autor' onChange={capturaAutor} required />
+                <input type="url" placeholder='Link da Imagem' onChange={capturaImg} required />
+                <input type="submit" value="Doar" className={s.buttonDoar} onClick={envioDados}/>
+            </form>
+        </section>
     )
-}
+    }
